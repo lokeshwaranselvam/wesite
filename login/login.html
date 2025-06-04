@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adroitrium Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-box">
+      <h1>WELCOME</h1>
+      <h2>Adroitrium</h2>
+      <p>Empowering future coders through expert-led programming, data science & full-stack development courses.</p>
+      <img src="C:\Users\lokeshwaran\OneDrive\Desktop\Shanky hawks international private limited\imgs\3d symbol without bg.png" alt="3D Symbol" class="logo-image" />
+    </div>
+
+    <div class="right-box" id="formContainer">
+      <div class="form-slider">
+
+        <!-- Login Form -->
+        <form class="form login-form" onsubmit="event.preventDefault(); login();">
+          <h2>Sign in</h2>
+          <p class="subtext">Login to access your courses and progress.</p>
+
+          <div class="input-group">
+            <label for="username"><i class="fa fa-user"></i></label>
+            <input type="text" id="username" placeholder="User Name" required />
+          </div>
+
+          <div class="input-group">
+            <label for="password"><i class="fa fa-lock"></i></label>
+            <input type="password" id="password" placeholder="Password" required />
+          </div>
+
+          <div class="options">
+            <label><input type="checkbox" /> Remember me</label>
+            <a href="#">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="login-btn">Sign in</button>
+          <div class="divider">or</div>
+          <button type="button" class="alt-btn">Sign in with other</button>
+
+          <p class="signup">Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a></p>
+          <p class="message" id="loginMessage"></p>
+        </form>
+
+        <!-- Signup Form -->
+        <form class="form signup-form" onsubmit="event.preventDefault(); signup();">
+          <h2>Sign up</h2>
+          <p class="subtext">Create your account to start learning.</p>
+
+          <div class="input-group">
+            <label for="newUsername"><i class="fa fa-user"></i></label>
+            <input type="text" id="newUsername" placeholder="User Name" required />
+          </div>
+
+          <div class="input-group">
+            <label for="newEmail"><i class="fa fa-envelope"></i></label>
+            <input type="email" id="newEmail" placeholder="Email" required />
+          </div>
+
+          <div class="input-group">
+            <label for="newPassword"><i class="fa fa-lock"></i></label>
+            <input type="password" id="newPassword" placeholder="Password in 8 characters and integers" required />
+          </div>
+
+          <div class="input-group">
+            <label for="confirmPassword"><i class="fa fa-lock"></i></label>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+          </div>
+
+          <button type="submit" class="login-btn">Sign up</button>
+          <div class="divider">or</div>
+          <button type="button" class="alt-btn">Sign up with other</button>
+
+          <p class="signup">Already have an account? <a href="#" onclick="toggleForm()">Sign In</a></p>
+          <p class="message" id="signupMessage"></p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
