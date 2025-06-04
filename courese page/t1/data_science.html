@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Science Course</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #0a74da;
+    }
+
+    .btn-green {
+      background-color: #0a74da;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-green:hover {
+      background-color: #0868c4;
+      transform: translateY(-2px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .main-container {
+      display: flex;
+      flex: 1;
+      padding: 2rem;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .content-section {
+      flex: 2;
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .content-section h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #222;
+    }
+
+    .content-section p {
+      margin: 1rem 0;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+
+    .features span {
+      background: #f0f0f0;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Box-style application form */
+    .form-box {
+      flex: 1;
+      min-width: 350px;
+      position: sticky;
+      top: 2rem;
+      height: fit-content;
+    }
+
+    .form-container {
+      background: #f8faff;
+      border-radius: 10px;
+      padding: 1rem; /* Reduced from 2rem to 1rem */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid #e0e6ff;
+    }
+
+    .form-container h2 {
+      font-size: 1.3rem; /* Reduced from 1.5rem */
+      margin-bottom: 0.8rem; /* Reduced from 1.5rem */
+      text-align: center;
+      color: #0a74da;
+    }
+
+    .form-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem; /* Reduced from 0.6rem */
+    }
+
+    .form-container input {
+      padding: 0.5rem; /* Reduced from 0.8rem */
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.85rem; /* Reduced from 0.9rem */
+      transition: all 0.3s ease;
+    }
+
+    .form-container input:focus {
+      outline: none;
+      border-color: #0a74da;
+      box-shadow: 0 0 0 3px rgba(10, 116, 218, 0.1);
+    }
+
+    .form-container small {
+      display: block;
+      margin-top: 0.6rem; /* Reduced from 1rem */
+      color: #888;
+      font-size: 0.7rem; /* Reduced from 0.75rem */
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* Curriculum Section */
+    .curriculum {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      margin-top: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .curriculum h2 {
+      color: #0a74da;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+    }
+
+    .intro-section, .module {
+      margin-bottom: 1.5rem;
+    }
+
+    .intro-section h3, .module h3 {
+      color: #333;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .intro-section ul, .module ul {
+      padding-left: 1.5rem;
+    }
+
+    .intro-section li, .module li {
+      margin-bottom: 0.7rem;
+      line-height: 1.6;
+    }
+
+    .divider {
+      height: 1px;
+      background: #eee;
+      margin: 2rem 0;
+    }
+
+    .download-btn {
+      display: block;
+      margin: 2rem auto 0;
+      padding: 0.8rem 2rem;
+      background: #0a74da;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background: #0868c4;
+      transform: translateY(-2px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 992px) {
+      .main-container {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      .form-box {
+        position: static;
+        min-width: 100%;
+      }
+      
+      .content-section, .form-container, .curriculum {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Androitrium</div>
+    <a class="btn-green" href="#">Apply Now</a>
+  </header>
+
+  <div class="main-container">
+    <div class="content-section">
+      <img src="C:\Users\DHINESH\Downloads\WhatsApp Image 2025-05-08 at 21.11.25_eb84bd0a.jpg" alt="Androitrium" width="150" />
+      <h1>Advance Your Career with Our Industry-Ready Master DataScience with AI 🎓</h1>
+      <p>Transform your career with industry-relevant data science training, portfolio projects, and personalized career support to help you land your dream job.</p>
+      
+      <div class="features">
+        <span>🔴 Live Classes</span>
+        <span>👨‍🏫 Expert Mentors</span>
+        <span>🗓️ 10 Months Program</span>
+        <span>🌐 Tamil</span>
+        <span>💼 Placement Assistance</span>
+      </div>
+
+      <div class="curriculum">
+        <h2>Explore Our Industry-Aligned Curriculum</h2>
+        
+        <div class="intro-section">
+          <h3>Introduction to Data Science</h3>
+          <ul>
+            <li>Learn the fundamentals of Data Science and Machine Learning and explore their real-world applications</li>
+            <li>Practice competitive programming with Python using CodeKata to strengthen problem-solving skills</li>
+            <li>Understand the basics of Python programming including key data structures and functions</li>
+            <li>Gain insights into current industry trends in Data Science with expert-led sessions</li>
+          </ul>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="modules">
+          <div class="module">
+            <h3>Module 1: Python for Data Science</h3>
+            <ul>
+              <li>Advanced Python programming for data analysis</li>
+              <li>NumPy and Pandas for numerical computing</li>
+              <li>Data visualization with Matplotlib and Seaborn</li>
+              <li>Working with APIs and web scraping</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Module 2: Data Wrangling & EDA</h3>
+            <ul>
+              <li>Data cleaning and preprocessing techniques</li>
+              <li>Exploratory Data Analysis (EDA) methodologies</li>
+              <li>Feature engineering and selection</li>
+              <li>Handling missing data and outliers</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Module 3: Statistics & Probability</h3>
+            <ul>
+              <li>Descriptive and inferential statistics</li>
+              <li>Probability distributions and hypothesis testing</li>
+              <li>A/B testing and experimental design</li>
+              <li>Statistical modeling fundamentals</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Module 4: Machine Learning Fundamentals</h3>
+            <ul>
+              <li>Supervised vs unsupervised learning</li>
+              <li>Regression and classification algorithms</li>
+              <li>Model evaluation and validation</li>
+              <li>Hyperparameter tuning and model optimization</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Module 5: Advanced ML & Deep Learning</h3>
+            <ul>
+              <li>Ensemble methods (Random Forest, XGBoost)</li>
+              <li>Neural networks and TensorFlow/PyTorch basics</li>
+              <li>Natural Language Processing fundamentals</li>
+              <li>Computer vision introduction</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Module 6: Big Data & Cloud Computing</h3>
+            <ul>
+              <li>Introduction to Hadoop and Spark</li>
+              <li>Working with SQL and NoSQL databases</li>
+              <li>Cloud platforms for Data Science (AWS/GCP)</li>
+              <li>Distributed computing concepts</li>
+            </ul>
+          </div>
+
+          <div class="module">
+            <h3>Module 7: Deployment & Capstone Project</h3>
+            <ul>
+              <li>Model deployment with Flask/Django</li>
+              <li>Building data pipelines</li>
+              <li>End-to-end project development</li>
+              <li>Industry case studies and best practices</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+      </div>
+    </div>
+
+    <!-- Box-style application form -->
+    <div class="form-box">
+      <div class="form-container">
+        <h2>Apply Now</h2>
+        <form action="/submit" method="POST">
+          <label>Full Name:</label>
+          <input name="name" type="text" required>
+          <label>Email Address:</label>
+          <input name="email" type="email" required>
+          <label>Phone:</label>
+          <input name="phone" type="tel" required>
+          <label>Education:</label>
+          <input name="education" type="text">
+          <label>Profession:</label>
+          <input name="profession" type="text">
+          <label>Graduation Year:</label>
+          <input name="graduation" type="text">
+          <label>WhatsApp Number:</label>
+          <input name="whatsapp" type="text">
+          <label>City:</label>
+          <input name="city" type="text">
+          <button type="submit" class="btn-green">Submit Application</button>
+        </form>
+        <small>By registering, I agree to be contacted via phone, SMS, or email.</small>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
